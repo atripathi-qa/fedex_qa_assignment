@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-body" data-testid="planetCard">
+    <h6 class="card-subtitle mb-2 text-muted" data-testid="planetCardSubtext">{{planet.name}}</h6>
+
+    <div class="row">
+      <div class="col-sm-2" data-cy="poplulation">Population:</div>
+      <div class="col-sm-10">
+        {{planet.population}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2" data-cy="climate">Climate:</div>
+      <div class="col-sm-10">
+        {{planet.climate}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2" data-cy="gravity">Gravity:</div>
+      <div class="col-sm-10">
+        {{planet.gravity}}
+      </div>
+    </div>
+  </div>
+</div>

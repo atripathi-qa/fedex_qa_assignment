@@ -1,0 +1,187 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 4,
+    "pending": 0,
+    "failures": 1,
+    "start": "2022-07-31T15:39:27.567Z",
+    "end": "2022-07-31T15:40:01.763Z",
+    "duration": 20209,
+    "testsRegistered": 5,
+    "passPercent": 80,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6b511699-4280-4861-9288-59d51ee1afe9",
+      "title": "",
+      "fullFile": "cypress/e2e/searchPage.spec.js",
+      "file": "cypress/e2e/searchPage.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9acb037c-61af-4537-9eba-e14b186c536d",
+          "title": "e2e star wars search page",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should let the user search by people",
+              "fullTitle": "e2e star wars search page should let the user search by people",
+              "timedOut": null,
+              "duration": 3378,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "searchPage.getTitle().should('have.text', 'The Star Wars Search');\nsearchPage.inputText(this.data.characterName).then(() => {\n  searchPage.clickSearch();\n});\nsearchPage.getCharacterCard('Gender:', 'Birth year:', 'Eye color:', 'Skin color:');\nsearchPage.clearInput(); // removes value from the input field\nsearchPage.inputText(this.data.invalidData).then(() => {\n  searchPage.clickSearch();\n});\nsearchPage.getNotFoundText().should('be.visible'); // Not Found is displayed",
+              "err": {},
+              "uuid": "6199ab07-9b29-4487-903b-3ecaf24deee4",
+              "parentUUID": "9acb037c-61af-4537-9eba-e14b186c536d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should let the user search by planet",
+              "fullTitle": "e2e star wars search page should let the user search by planet",
+              "timedOut": null,
+              "duration": 4224,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "searchPage.getPlanetRadioBtn().click();\nsearchPage.inputText(this.data.planetName).then(() => {\n  searchPage.clickSearch();\n});\nsearchPage.getPlanetCard('Population:', 'Climate:', 'Gravity:');\nsearchPage.clearInput();\nsearchPage.inputText(this.data.invalidData).then(function () {\n  searchPage.clickSearch();\n});\nsearchPage.getNotFoundText().should('be.visible');",
+              "err": {},
+              "uuid": "e697cb98-88d2-40f0-9f08-459d8b219e46",
+              "parentUUID": "9acb037c-61af-4537-9eba-e14b186c536d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should not display info when no search data is provided",
+              "fullTitle": "e2e star wars search page should not display info when no search data is provided",
+              "timedOut": null,
+              "duration": 6965,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "searchPage.inputText(this.data.characterName).then(() => {\n  searchPage.clickSearch();\n});\nsearchPage.getCharacterName().should('have.text', this.data.characterName);\nsearchPage.clearInput();\nsearchPage.enterSearchBtn('{enter}'); // Pressed \"enter\" on the search field \nsearchPage.getCharacterName().should('be.empty'); // Bug: previous search result is getting displayed",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 6000ms: expected '<h6.card-subtitle.mb-2.text-muted>' to be 'empty'",
+                "estack": "AssertionError: Timed out retrying after 6000ms: expected '<h6.card-subtitle.mb-2.text-muted>' to be 'empty'\n    at Context.eval (http://localhost:4200/__cypress/tests?p=cypress/e2e/searchPage.spec.js:162:35)",
+                "diff": null
+              },
+              "uuid": "3ec76b6c-00bc-41df-9d2f-51d777415154",
+              "parentUUID": "9acb037c-61af-4537-9eba-e14b186c536d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should not display info when input search does not match with the query",
+              "fullTitle": "e2e star wars search page should not display info when input search does not match with the query",
+              "timedOut": null,
+              "duration": 4106,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "searchPage.getPlanetRadioBtn().click();\nsearchPage.inputText(this.data.characterName).then(() => {\n  searchPage.clickSearch();\n});\nsearchPage.getNotFoundText().should('be.visible');",
+              "err": {},
+              "uuid": "da8e9b81-132f-472c-8ba1-b9f92a36d376",
+              "parentUUID": "9acb037c-61af-4537-9eba-e14b186c536d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should let the user perform partial matching",
+              "fullTitle": "e2e star wars search page should let the user perform partial matching",
+              "timedOut": null,
+              "duration": 1536,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "searchPage.inputText(this.data.partialCharacterName).then(() => {\n  searchPage.clickSearch();\n});\nsearchPage.getCharacterCard('Gender:', 'Birth year:', 'Eye color:', 'Skin color:');",
+              "err": {},
+              "uuid": "c1dad77e-c4a1-42e3-b698-01a1a2c65220",
+              "parentUUID": "9acb037c-61af-4537-9eba-e14b186c536d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6199ab07-9b29-4487-903b-3ecaf24deee4",
+            "e697cb98-88d2-40f0-9f08-459d8b219e46",
+            "da8e9b81-132f-472c-8ba1-b9f92a36d376",
+            "c1dad77e-c4a1-42e3-b698-01a1a2c65220"
+          ],
+          "failures": [
+            "3ec76b6c-00bc-41df-9d2f-51d777415154"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 20209,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
